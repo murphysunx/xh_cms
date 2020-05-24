@@ -1,9 +1,11 @@
 import React from "react";
-// import reqwest from "reqwest";
-// import { Table } from "antd";
-import { connect } from 'dva'
-// import styles from "./index.less";
-import CategoryCard from './categoryCard'
+
+import {connect} from 'dva';
+import { PageHeaderWrapper } from '@ant-design/pro-layout';
+
+import CatCard from './catCard';
+import GridCanvas from "./gridCanvas";
+import CollectionsPage from "./FormInModal";
 
 
 const namespace = 'product_categories'
@@ -32,18 +34,17 @@ export default class ProductCategoryCanvas extends React.Component {
   }
 
   render() {
+    const cards = this.props.catList.map(cat => {
+      return (
+          <CatCard {...cat} />
+      );
+    });
+
     return (
-      <div>
-        <CategoryCard code='新建分类' name='新建分类' />
-        {
-          this.props.catList.map((cat) => {
-            // const { code, name } = cat;
-            return (
-              <CategoryCard {...cat} />
-            );
-          })
-        }
-      </div>
+      <PageHeaderWrapper>
+        <CollectionsPage />
+        <GridCanvas cards={cards} />
+      </PageHeaderWrapper>
     );
   }
 }

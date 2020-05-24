@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd'
 
 
-const CategoryCard = (props) => {
+const CatCard = (props) => {
   const catCode = props.code;
   const catName = props.name;
 
@@ -13,4 +13,4 @@ const CategoryCard = (props) => {
   );
 }
 
-export default CategoryCard;
+export default CatCard;
