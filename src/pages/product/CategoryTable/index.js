@@ -1,12 +1,9 @@
 import React from "react";
-// import reqwest from "reqwest";
-// import { Table } from "antd";
-import { connect } from 'dva'
-// import styles from "./index.less";
-import CategoryCard from './categoryCard'
+import { connect } from 'dva';
 
+import CategoryCard from './categoryCard';
 
-const namespace = 'product_categories'
+const namespace = 'product_categories';
 
 const mapStateToProps = (state) => {
   const catList = state[namespace].data;
