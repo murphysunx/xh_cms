@@ -7,7 +7,7 @@ const CategoryCard = (props) => {
   const catName = props.name;
 
   return (
-    <Card title={catCode} style={{ width: 300 }}>
+    <Card bordered={true} title={catCode} style={{ width: 300 }}>
       <p>{catName}</p>
     </Card>
   );
