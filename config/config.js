@@ -66,6 +66,12 @@ export default defineConfig({
                   name: 'category',
                   icon: 'smile',
                   component: './product/CategoryTable'
+                },
+                {
+                  path: '/product/createcategory',
+                  name: 'create category',
+                  icon: 'smile',
+                  component: './product/CreateCategory'
                 }
               ]
             },
