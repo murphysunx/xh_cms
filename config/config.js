@@ -59,21 +59,22 @@ export default defineConfig({
               path: '/product',
               name: 'prodcut',
               icon: 'smile',
-              // component: './product/CategoryTable'
+              // component: './product/CardInColumn/index.jsx',
+              // component: './product/CardInColumn',
               routes: [
                 {
                   path: '/product/category',
                   name: 'category',
                   icon: 'smile',
-                  component: './product/CategoryTable'
+                  component: './product/category',
                 },
                 {
-                  path: '/product/createcategory',
-                  name: 'create category',
+                  path: '/product/product_unit',
+                  name: 'product_unit',
                   icon: 'smile',
-                  component: './product/CreateCategory'
-                }
-              ]
+                  component: './product/productUnit',
+                },
+              ],
             },
             {
               path: '/admin',
