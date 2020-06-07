@@ -4,7 +4,7 @@ const delay = (miilisecond) => {
   return new Promise((resolve) => {
     setTimeout(resolve, miilisecond);
   });
-}
+};
 
 export default {
   namespace: 'product_categories',
@@ -17,13 +17,13 @@ export default {
       const cats = yield call(request, endPointURI);
       yield put({ type: 'loadProductCategories', payload: cats });
       yield call(delay, 3000);
-    }
+    },
   },
   reducers: {
     loadProductCategories(state, { payload: cats }) {
       return {
         data: cats,
       };
-    }
-  }
-}
+    },
+  },
+};
