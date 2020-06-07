@@ -2,8 +2,8 @@ import React from 'react';
 import { Card } from 'antd';
 
 const CatCard = (props) => {
-  const catCode = props.code;
-  const catName = props.name;
+  const catCode = props.cat_id;
+  const catName = props.cat_name;
 
   return (
     <Card bordered="true" title={catCode} style={{ width: 300 }}>
