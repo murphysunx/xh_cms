@@ -4,6 +4,7 @@ import { connect } from 'dva';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 import ProdUnitCard from './prodUnitCard';
+import CollectionsPage from './FormInModal';
 import GridCanvas from '../category/gridCanvas';
 
 const namespace = 'product_units';
@@ -38,6 +39,7 @@ export default class ProductUnitCanvas extends React.Component {
 
     return (
       <PageHeaderWrapper>
+        <CollectionsPage />
         <GridCanvas cards={cards} />
       </PageHeaderWrapper>
     );
