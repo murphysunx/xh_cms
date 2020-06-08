@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import {connect} from 'dva';
+import { connect } from 'dva';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 import CatCard from './catCard';
-import GridCanvas from "./gridCanvas";
-import CollectionsPage from "./FormInModal";
+import GridCanvas from './gridCanvas';
+import NewCat from './NewCat';
 
-
-const namespace = 'product_categories'
+const namespace = 'product_categories';
 
 const mapStateToProps = (state) => {
   const catList = state[namespace].data;
@@ -34,15 +33,13 @@ export default class ProductCategoryCanvas extends React.Component {
   }
 
   render() {
-    const cards = this.props.catList.map(cat => {
-      return (
-          <CatCard {...cat} />
-      );
+    const cards = this.props.catList.map((cat) => {
+      return <CatCard {...cat} />;
     });
 
     return (
       <PageHeaderWrapper>
-        <CollectionsPage />
+        <NewCat cats={this.props.catList} />
         <GridCanvas cards={cards} />
       </PageHeaderWrapper>
     );
