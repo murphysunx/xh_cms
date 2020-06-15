@@ -38,7 +38,7 @@ const EditProductForm = ({ visible, onCreate, onCancel, name, category, descript
             },
           ]}
         >
-          <Input defaultValue="123" placeholder={name} />
+          <Input defaultValue={name} />
         </Form.Item>
 
         <CategoryFormItem category={category} />
