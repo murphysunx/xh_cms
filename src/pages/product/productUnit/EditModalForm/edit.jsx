@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Button, Modal, Form, Input } from 'antd';
+import { Form, Modal, Input } from 'antd';
+
 import CategoryFormItem from '../FormInModal';
 
-const CollectionEditForm = ({ visible, onCreate, onCancel, name, category, specification }) => {
+const EditProductForm = ({ visible, onCreate, onCancel, name, category, description }) => {
   const [form] = Form.useForm();
+
+  console.log(name);
   return (
     <Modal
       visible={visible}
-      title="Create a new product"
+      title="Edit product"
       okText="Save"
       cancelText="Cancel"
       onCancel={onCancel}
@@ -28,7 +31,6 @@ const CollectionEditForm = ({ visible, onCreate, onCancel, name, category, speci
         <Form.Item
           name="productName"
           label="Product Name"
-          value={name}
           rules={[
             {
               required: true,
@@ -36,55 +38,17 @@ const CollectionEditForm = ({ visible, onCreate, onCancel, name, category, speci
             },
           ]}
         >
-          <Input />
+          <Input defaultValue="123" placeholder={name} />
         </Form.Item>
 
-        {/* <Form.Item name="modifier" className="collection-create-form_last-form-item"> */}
-        {/*	<Radio.Group> */}
-        {/*		<Radio value="public">Public</Radio> */}
-        {/*		<Radio value="private">Private</Radio> */}
-        {/*	</Radio.Group> */}
-        {/* </Form.Item> */}
-        <CategoryFormItem value={category} />
+        <CategoryFormItem category={category} />
 
-        <Form.Item name="description" label="Description" value={specification}>
-          <Input type="textarea" />
+        <Form.Item name="description" label="Description">
+          <Input type="textarea" defaultValue={description} />
         </Form.Item>
       </Form>
     </Modal>
   );
 };
 
-const EditCollectionsPage = (name, category, specification) => {
-  const [visible, setVisible] = useState(false);
-
-  const onCreate = (values) => {
-    console.log('Received values of form: ', values);
-    setVisible(false);
-  };
-
-  return (
-    <div>
-      <Button
-        type="primary"
-        onClick={() => {
-          setVisible(true);
-        }}
-      >
-        Edit
-      </Button>
-      <CollectionEditForm
-        visible={visible}
-        onCreate={onCreate}
-        onCancel={() => {
-          setVisible(false);
-        }}
-        name={name}
-        category={category}
-        specification={specification}
-      />
-    </div>
-  );
-};
-
-export default EditCollectionsPage;
+export default EditProductForm;

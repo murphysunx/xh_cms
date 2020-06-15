@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-// import EditCollectionsPage from './EditModalForm';
+import EditProductPage from './EditModalForm';
 
-function handleEdit() {
+function handleEdit(props) {
   console.log('Edit');
+  console.log(props);
 }
 
 const ProdUnitCard = (props) => {
@@ -16,10 +17,18 @@ const ProdUnitCard = (props) => {
     <Card
       title={prodUnitCode}
       style={{ width: 300 }}
-      actions={[<EditOutlined key="edit" onClick={handleEdit} />, <DeleteOutlined key="delete" />]}
+      actions={[
+        <EditOutlined key="edit" onClick={handleEdit(props)} />,
+        <DeleteOutlined key="delete" />,
+      ]}
     >
       <p>{prodUnitCategory}</p>
       <p>{prodUnitSpecification}</p>
+      <EditProductPage
+        name={prodUnitCode}
+        category={prodUnitCategory}
+        description={prodUnitSpecification}
+      />
       {/* <EditCollectionsPage 
         name={prodUnitCode} 
         category={prodUnitCategory}

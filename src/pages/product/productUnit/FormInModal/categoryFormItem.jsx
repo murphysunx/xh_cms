@@ -48,7 +48,7 @@ export default class CategoryFormItem extends React.Component {
           },
         ]}
       >
-        <Select placeholder="Select a catgory" allowClear>
+        <Select placeholder="Select a catgory" value={this.props.category} allowClear>
           {catOptions}
         </Select>
       </Form.Item>
