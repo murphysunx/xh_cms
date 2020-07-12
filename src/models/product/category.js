@@ -13,7 +13,7 @@ export default {
   },
   effects: {
     *queryProductCategories(_, { put, call }) {
-      const endPointURI = 'http://localhost:8080/product/category/';
+      const endPointURI = 'http://localhost:8000/product/category/';
       const cats = yield call(request, endPointURI);
       yield put({ type: 'loadProductCategories', payload: cats });
       yield call(delay, 3000);

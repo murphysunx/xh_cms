@@ -3,16 +3,16 @@ import React from 'react';
 import { connect } from 'dva';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
-import CatCard from './catCard';
-import GridCanvas from './gridCanvas';
+import ProdUnitCard from './prodUnitCard';
 import CollectionsPage from './FormInModal';
+import GridCanvas from '../category/gridCanvas';
 
-const namespace = 'product_categories';
+const namespace = 'product_units';
 
 const mapStateToProps = (state) => {
-  const catList = state[namespace].data;
+  const unitList = state[namespace].data;
   return {
-    catList,
+    unitList,
   };
 };
 
@@ -20,21 +20,21 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onDidMount: () => {
       dispatch({
-        type: `${namespace}/queryProductCategories`,
+        type: `${namespace}/queryProductUnits`,
       });
     },
   };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class ProductCategoryCanvas extends React.Component {
+export default class ProductUnitCanvas extends React.Component {
   componentDidMount() {
     this.props.onDidMount();
   }
 
   render() {
-    const cards = this.props.catList.map((cat) => {
-      return <CatCard {...cat} />;
+    const cards = this.props.unitList.map((unit) => {
+      return <ProdUnitCard {...unit} />;
     });
 
     return (

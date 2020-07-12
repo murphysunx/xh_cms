@@ -66,9 +66,15 @@ export default defineConfig({
                   path: '/product/category',
                   name: 'category',
                   icon: 'smile',
-                  component: './product/category'
+                  component: './product/category',
                 },
-              ]
+                {
+                  path: '/product/product_unit',
+                  name: 'product_unit',
+                  icon: 'smile',
+                  component: './product/productUnit',
+                },
+              ],
             },
             {
               path: '/admin',
