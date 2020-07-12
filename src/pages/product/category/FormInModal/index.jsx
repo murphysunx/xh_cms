@@ -56,6 +56,10 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
 const CollectionsPage = () => {
   const [visible, setVisible] = useState(false);
 
+  /**
+   * create new cat
+   * @param {*} values
+   */
   const onCreate = (values) => {
     console.log('Received values of form: ', values);
     setVisible(false);

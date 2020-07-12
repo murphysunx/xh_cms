@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Form, Modal, Input } from 'antd';
 
-import CategoryFormItem from '../FormInModal';
-
-const EditProductForm = ({ visible, onCreate, onCancel, name, category, description }) => {
+const EditProductForm = ({ visible, onCreate, onCancel, name, description }) => {
   const [form] = Form.useForm();
 
   console.log(name);
@@ -41,7 +39,7 @@ const EditProductForm = ({ visible, onCreate, onCancel, name, category, descript
           <Input defaultValue={name} />
         </Form.Item>
 
-        <CategoryFormItem category={category} />
+        {/* <CategoryFormItem category={category} /> */}
 
         <Form.Item name="description" label="Description">
           <Input type="textarea" defaultValue={description} />

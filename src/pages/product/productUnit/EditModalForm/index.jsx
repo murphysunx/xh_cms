@@ -29,7 +29,6 @@ const EditProductPage = (props) => {
           setVisible(false);
         }}
         name={props.name}
-        category={props.category}
         description={props.description}
       />
     </div>
