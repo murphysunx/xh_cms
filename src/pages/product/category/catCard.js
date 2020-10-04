@@ -2,12 +2,13 @@ import React from 'react';
 import { Card } from 'antd';
 
 const CatCard = (props) => {
-  const catCode = props.code;
-  const catName = props.name;
+  // const catCode = props.code;
+  // const catName = props.name;
+  const { cat_id, cat_name } = props;
 
   return (
-    <Card title={catCode} style={{ width: 300 }}>
-      <p>{catName}</p>
+    <Card title={cat_id} style={{ width: 300 }}>
+      <p>{cat_name}</p>
     </Card>
   );
 };

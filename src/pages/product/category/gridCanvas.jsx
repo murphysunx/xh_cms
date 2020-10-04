@@ -13,15 +13,9 @@ function group(array, subGroupLength) {
   return newArray;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-let GridCanvas;
-export default GridCanvas = (props) => {
-  // console.log("gird canvas's props");
-  // console.log(props);
+export const GridCanvas = (props) => {
   const cardsPerRow = 3;
   const { cards } = props; // 解构语法不熟悉
-  // console.log("cards to grid");
-  // console.log(cards);
   const groupedCards = group(cards, cardsPerRow);
   const gridCards = groupedCards.map((cardGroup) => {
     const row = cardGroup.map((card) => {

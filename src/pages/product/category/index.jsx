@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 import CatCard from './catCard';
-import GridCanvas from './gridCanvas';
+import { GridCanvas } from './gridCanvas';
 import CollectionsPage from './FormInModal';
 
 const namespace = 'product_categories';

@@ -5,7 +5,7 @@ import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 import ProdUnitCard from './prodUnitCard';
 import CollectionsPage from './FormInModal';
-import GridCanvas from '../category/gridCanvas';
+import { GridCanvas } from '../category/gridCanvas';
 
 const namespace = 'product_units';
 
