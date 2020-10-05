@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
 
 import { Button, Modal, Form, Input } from 'antd';
+import { connect } from 'dva';
 import ParentCatFormItem from './parentCatFormItem';
+
+const namespace = 'product_categories';
+
+const mapStateToProps = (state) => {
+  const catList = state[namespace].data;
+  return {
+    catList,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addCat: (cat) => {
+      dispatch({
+        type: `${namespace}/addProductCategory`,
+        payload: cat,
+      });
+    },
+  };
+};
 
 const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
   const [form] = Form.useForm();
@@ -38,22 +59,13 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
         >
           <Input />
         </Form.Item>
-        {/* <Form.Item name="description" label="Description"> */}
-        {/*	<Input type="textarea" /> */}
-        {/* </Form.Item> */}
-        {/* <Form.Item name="modifier" className="collection-create-form_last-form-item"> */}
-        {/*	<Radio.Group> */}
-        {/*		<Radio value="public">Public</Radio> */}
-        {/*		<Radio value="private">Private</Radio> */}
-        {/*	</Radio.Group> */}
-        {/* </Form.Item> */}
         <ParentCatFormItem />
       </Form>
     </Modal>
   );
 };
 
-const CollectionsPage = () => {
+const CollectionsPage = (props) => {
   const [visible, setVisible] = useState(false);
 
   /**
@@ -63,6 +75,7 @@ const CollectionsPage = () => {
   const onCreate = (values) => {
     console.log('Received values of form: ', values);
     setVisible(false);
+    props.addCat(values);
   };
 
   return (
@@ -86,4 +99,4 @@ const CollectionsPage = () => {
   );
 };
 
-export default CollectionsPage;
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionsPage);

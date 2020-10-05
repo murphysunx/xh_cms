@@ -31,8 +31,8 @@ export default class ParentCatFormItem extends React.Component {
 
   render() {
     const cats = this.props.catList.map((cat) => {
-      const { name } = cat;
-      return <Option value={name}>{name}</Option>;
+      const { cat_name, cat_id } = cat;
+      return <Option value={cat_id}>{cat_name}</Option>;
     });
     // the option for not having any parent cat
     const nullOption = <Option value="null">null</Option>;
