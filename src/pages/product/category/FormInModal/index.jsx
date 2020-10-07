@@ -26,7 +26,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
   const [form] = Form.useForm();
-  console.log('start loading');
   return (
     <Modal
       visible={visible}

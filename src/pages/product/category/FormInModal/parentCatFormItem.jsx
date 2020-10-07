@@ -35,7 +35,7 @@ export default class ParentCatFormItem extends React.Component {
       return <Option value={cat_id}>{cat_name}</Option>;
     });
     // the option for not having any parent cat
-    const nullOption = <Option value="null">null</Option>;
+    const nullOption = <Option value={null}>null</Option>;
     const catOptions = [nullOption].concat(cats);
 
     return (
@@ -44,7 +44,7 @@ export default class ParentCatFormItem extends React.Component {
         label="parent category"
         rules={[
           {
-            required: true,
+            required: false,
           },
         ]}
       >

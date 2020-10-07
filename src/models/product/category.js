@@ -1,3 +1,4 @@
+import { Category } from '@/utils/category';
 import request from '../../utils/request';
 
 const delay = (miilisecond) => {
@@ -20,25 +21,52 @@ export default {
     },
     *addProductCategory({ payload }, { put, call }) {
       const endPointURI = `http://localhost:8080/product/category/`;
-      const { catName } = payload;
-      // FIXME add parent id
+      const { catName, parentCat } = payload;
       const cat = yield call(request, endPointURI, {
         method: 'post',
-        data: { cat_name: catName },
+        data: { cat_name: catName, parent_id: parentCat },
       });
       yield put({ type: 'pushProductCategory', payload: cat });
       yield call(delay, 1000);
     },
+    *deleteProductCategory({ payload }, { put, call }) {
+      const endPointURI = `http://localhost:8080/product/category/${payload}`;
+      yield call(request, endPointURI);
+      yield put({ type: 'removeProductCategory', payload });
+    },
   },
   reducers: {
     loadProductCategories(state, { payload: cats }) {
+      // build hierachical categories
+      const roots = cats
+        .filter((cat) => {
+          return cat.parent_id === null;
+        })
+        .map((cat) => new Category(cat.cat_id, cat.cat_name, cat.parent_id));
+      const leaves = cats
+        .filter((cat) => cat.parent_id !== null)
+        .map((cat) => new Category(cat.cat_id, cat.cat_name, cat.parent_id));
+      leaves.forEach((lev) => {
+        const pat = roots.find((root) => root.catId === lev.catPid);
+        pat.addChild(lev);
+      });
+      return {
+        data: roots,
+      };
+    },
+    pushProductCategory(state, { payload: cat }) {
+      const cats = [...state.data];
+      cats.push(cat);
       return {
         data: cats,
       };
     },
-    pushProductCategory(state, { payload: cat }) {
-      state.data.push(cat);
-      return state;
+    removeProductCategory(state, { payload: cid }) {
+      let cats = [...state.data];
+      cats = cats.filter((c) => c.catId !== cid);
+      return {
+        data: cats,
+      };
     },
   },
 };

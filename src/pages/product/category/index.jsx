@@ -34,7 +34,7 @@ export default class ProductCategoryCanvas extends React.Component {
 
   render() {
     const cards = this.props.catList.map((cat) => {
-      return <CatCard {...cat} />;
+      return <CatCard cat={cat} />;
     });
 
     return (
