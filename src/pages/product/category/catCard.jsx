@@ -1,15 +1,12 @@
 import React from 'react';
 import { Card, Popconfirm } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
+import { findTop3Cats } from './utils';
 import { connect } from 'dva';
 
 const namespace = 'product_categories';
 
 const mapStateToProps = (state) => {
-  // const catList = state[namespace].data;
-  // return {
-  //   catList,
-  // };
   return state;
 };
 
@@ -26,8 +23,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const CatCard = (props) => {
   const { cat } = props;
-
-  const children = cat.catChildren.map((c) => <p>{c.catName}</p>);
+  const topCats = findTop3Cats(cat.catChildren);
+  const children = topCats.map((c) => <p>{c.catName}</p>);
 
   return (
     <Card
