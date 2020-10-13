@@ -1,18 +1,21 @@
 import React from 'react';
 import { Card, Popconfirm } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
-import { findTop3Cats } from './utils';
 import { connect } from 'dva';
+import { Dispatch } from 'umi';
+import { CategoryState } from '@/models/type/category';
+import { findTop3Cats } from './utils';
+import { Category } from './Category';
 
-const namespace = 'product_categories';
+const namespace = 'productCategories';
 
-const mapStateToProps = (state) => {
-  return state;
-};
+function mapStateToProps() {
+  return {};
+}
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    deleteCat: (cid) => {
+    deleteCat: (cid: number) => {
       dispatch({
         type: `${namespace}/deleteProductCategory`,
         payload: cid,
@@ -21,20 +24,25 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const CatCard = (props) => {
+interface Props extends CategoryState {
+  cat: Category;
+  deleteCat: Function;
+}
+
+const CatCard = (props: Props) => {
   const { cat } = props;
-  const topCats = findTop3Cats(cat.catChildren);
-  const children = topCats.map((c) => <p>{c.catName}</p>);
+  const topCats = findTop3Cats(cat.children);
+  const children = topCats.map((c) => <p key={`${cat.id}-tc-${c.id}`}>{c.name}</p>);
 
   return (
     <Card
-      title={cat.catName}
+      title={cat.name}
       style={{ width: 300 }}
       actions={[
         <Popconfirm
           title="Are you sure?"
           onConfirm={() => {
-            props.deleteCat(cat.catId);
+            props.deleteCat(cat.id);
           }}
           onCancel={() => {}}
         >

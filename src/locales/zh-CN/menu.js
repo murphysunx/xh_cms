@@ -1,6 +1,8 @@
 export default {
   'menu.welcome': '欢迎',
   'menu.product': '产品',
+  'menu.product.category': '分类',
+  'menu.product.spu': 'spu',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',
